@@ -1,44 +1,27 @@
 import { Users } from 'lucide-react'
 
-export default function MeetTheCrew() {
-  const crew = [
-    {
-      id: 'crew-1',
-      image: '/images/crew/aow.jpg',
-      alt: 'Ebenezer Concert Crew Member',
-    },
-    {
-      id: 'crew-2',
-      image: '/images/crew/aow3.jpg',
-      alt: 'Ebenezer Concert Crew Member',
-    },
-    {
-      id: 'crew-3',
-      image: '/images/crew/aow4.jpg',
-      alt: 'Ebenezer Concert Crew Member',
-    },
-    {
-      id: 'crew-4',
-      image: '/images/crew/aow5.jpg',
-      alt: 'Ebenezer Concert Crew Member',
-    },
-    {
-      id: 'crew-5',
-      image: '/images/crew/aow6.jpg',
-      alt: 'Ebenezer Concert Crew Member',
-    },
-    {
-      id: 'crew-6',
-      image: '/images/crew/aow7.jpg',
-      alt: 'Ebenezer Concert Crew Member',
-    },
-    {
-      id: 'crew-7',
-      image: '/images/crew/aow8.jpg',
-      alt: 'Ebenezer Concert Crew Member',
-    },
-  ]
+// Automatically detect every image in public/images/crew/ dynamically
+const crewGlob = import.meta.glob<string>('/public/images/crew/*.{jpg,jpeg,png,webp,avif}', {
+  eager: true,
+  import: 'default',
+})
 
+// Sort naturally by filename (e.g. aow.jpg, aow3.jpg ... aow9.jpg) and map to crew cards
+const crew = Object.entries(crewGlob)
+  .sort(([pathA], [pathB]) =>
+    pathA.localeCompare(pathB, undefined, { numeric: true, sensitivity: 'base' })
+  )
+  .map(([filePath, assetUrl], index) => {
+    const fileName = filePath.split('/').pop() || `member-${index + 1}`
+    const imageUrl = assetUrl || filePath.replace(/^\/public/, '')
+    return {
+      id: `crew-${fileName}`,
+      image: imageUrl,
+      alt: 'Ebenezer Concert Crew Member',
+    }
+  })
+
+export default function MeetTheCrew() {
   return (
     <section id="crew" className="relative py-24 sm:py-32 bg-slate-950 text-slate-100 overflow-hidden">
       {/* Background Concert Lighting Glows */}
