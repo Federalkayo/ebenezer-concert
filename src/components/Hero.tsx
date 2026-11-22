@@ -10,27 +10,13 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16 lg:pt-32 lg:pb-24">
-      {/* Background Concert Crowd Image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=2200&q=85"
-          alt="Concert worship crowd with hands lifted"
-          className="w-full h-full object-cover object-center scale-105 animate-pulse duration-[10000ms]"
-        />
-
-        {/* Deep Multi-Layer Dark & Lighting Overlays */}
-        {/* Layer 1: Dark base gradient for maximum text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/85 via-slate-950/80 to-slate-950"></div>
-
-        {/* Layer 2: Concert stage volumetric lighting gradients (Purple, Pink & Cyan) */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900/50 via-fuchsia-950/30 to-transparent mix-blend-screen pointer-events-none"></div>
-        <div className="absolute -top-40 -left-40 w-96 h-96 bg-fuchsia-600/20 rounded-full blur-[120px] pointer-events-none"></div>
-        <div className="absolute top-1/3 -right-40 w-96 h-96 bg-indigo-600/20 rounded-full blur-[140px] pointer-events-none"></div>
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-72 bg-purple-600/15 rounded-full blur-[150px] pointer-events-none"></div>
-
-        {/* Layer 3: Subtle film grain / vignette texture */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(2,6,23,0.7)_100%)]"></div>
+    <section className="hero relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16 lg:pt-32 lg:pb-24">
+      {/* Concert stage atmospheric lighting accents (Purple, Pink & Cyan) */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900/40 via-fuchsia-950/20 to-transparent mix-blend-screen"></div>
+        <div className="absolute -top-40 -left-40 w-96 h-96 bg-fuchsia-600/15 rounded-full blur-[120px]"></div>
+        <div className="absolute top-1/3 -right-40 w-96 h-96 bg-indigo-600/15 rounded-full blur-[140px]"></div>
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-72 bg-purple-600/15 rounded-full blur-[150px]"></div>
       </div>
 
       {/* Main Hero Content */}
@@ -54,7 +40,7 @@ export default function Hero() {
         </h2>
 
         {/* Supportive Description */}
-        <p className="text-slate-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-8 font-normal leading-relaxed drop-shadow">
+        <p className="text-slate-200 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-8 font-normal leading-relaxed drop-shadow">
           Join thousands of passionate worshippers for an unforgettable night of divine intimacy, triumphant praise, and life-transforming encounters in God's presence.
         </p>
 
@@ -85,7 +71,7 @@ export default function Hero() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
           <button
             onClick={() => scrollTo('register')}
-            className="w-full sm:w-auto relative group overflow-hidden px-8 py-4 rounded-2xl font-black text-base sm:text-lg text-white bg-gradient-to-r from-fuchsia-600 via-purple-600 to-indigo-600 shadow-[0_0_40px_rgba(192,38,211,0.5)] hover:shadow-[0_0_60px_rgba(192,38,211,0.8)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer border border-fuchsia-300/40"
+            className="w-full sm:w-auto relative group overflow-hidden px-8 py-4 rounded-2xl font-black text-base sm:text-lg text-white bg-gradient-to-r from-fuchsia-600 via-purple-600 to-indigo-600 shadow-[0_0_40px_rgba(192,38,211,0.5)] hover:shadow-[0_0_60px_rgba(192,38,211,0.8)] hover:scale-105 active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer border border-fuchsia-300/40"
           >
             <Ticket className="w-5 h-5 text-fuchsia-200" />
             <span>GET YOUR FREE TICKET</span>
