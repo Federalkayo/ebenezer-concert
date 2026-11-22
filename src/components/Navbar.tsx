@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Sparkles, Menu, X, Ticket, ShieldCheck } from 'lucide-react'
+import { Menu, X, Ticket, ShieldCheck } from 'lucide-react'
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -43,9 +43,12 @@ export default function Navbar() {
             to="/"
             className="flex items-center gap-2.5 group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-500 rounded-lg p-1 active:scale-95 transition-transform"
           >
-            <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-fuchsia-500 via-purple-600 to-indigo-700 shadow-lg shadow-purple-500/25 group-hover:scale-105 transition-transform duration-300">
-              <Sparkles className="w-5 h-5 text-white animate-pulse" />
-              <div className="absolute inset-0 rounded-xl bg-fuchsia-400/20 blur-sm group-hover:blur-md transition-all"></div>
+            <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-purple-500/25 border border-purple-500/30 group-hover:scale-105 group-hover:border-fuchsia-400/60 transition-all duration-300">
+              <img
+                src="/images/logo.jpg"
+                alt="EBENEZER Logo"
+                className="w-full h-full object-cover object-center"
+              />
             </div>
             <div className="flex flex-col">
               <div className="flex items-center gap-1.5">

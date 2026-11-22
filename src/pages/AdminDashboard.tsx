@@ -15,8 +15,7 @@ import {
   UserCheck,
   UserX,
   Ticket,
-  Clock,
-  Sparkles
+  Clock
 } from 'lucide-react'
 import {
   getAdminSession,
@@ -31,7 +30,8 @@ import type { Attendee, DashboardStats, AdminUser } from '../types'
 export default function AdminDashboard() {
   const navigate = useNavigate()
   // Initialize admin user directly from session to prevent setState-in-effect
-  const [adminUser] = useState<AdminUser | null>(() => getAdminSession())
+  const [adminUser, setAdminUser] = useState<AdminUser | null>(null)
+  const [authChecked, setAuthChecked] = useState(false)
   const [stats, setStats] = useState<DashboardStats | null>(null)
   const [attendees, setAttendees] = useState<Attendee[]>([])
   const [searchQuery, setSearchQuery] = useState('')
@@ -57,20 +57,28 @@ export default function AdminDashboard() {
 
   // Verify Admin Session and load data
   useEffect(() => {
-    if (!adminUser) {
+    let active = true
+    getAdminSession().then((user) => {
+      if (!active) return
+      setAdminUser(user)
+      setAuthChecked(true)
+      if (!user) navigate('/admin/login')
+    }).catch(() => {
+      if (!active) return
+      setAuthChecked(true)
       navigate('/admin/login')
-      return
-    }
+    })
+    return () => { active = false }
+  }, [navigate])
 
-    const timer = setTimeout(() => {
-      loadData()
-    }, 150)
-
+  useEffect(() => {
+    if (!authChecked || !adminUser) return
+    const timer = setTimeout(() => { void loadData() }, 0)
     return () => clearTimeout(timer)
-  }, [adminUser, navigate, loadData])
+  }, [authChecked, adminUser, loadData])
 
   const handleLogout = () => {
-    logoutAdmin()
+    void logoutAdmin()
     navigate('/admin/login')
   }
 
@@ -97,9 +105,13 @@ export default function AdminDashboard() {
       <header className="bg-slate-900/90 border-b border-purple-900/30 sticky top-0 z-40 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Link to="/" className="flex items-center gap-2 group">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-fuchsia-500 to-indigo-600 flex items-center justify-center shadow-md">
-                <Sparkles className="w-4 h-4 text-white" />
+            <Link to="/" className="flex items-center gap-2.5 group">
+              <div className="w-8 h-8 rounded-lg overflow-hidden shadow-md border border-purple-500/30 group-hover:border-fuchsia-400/60 transition-colors">
+                <img
+                  src="/images/logo.jpg"
+                  alt="EBENEZER Logo"
+                  className="w-full h-full object-cover object-center"
+                />
               </div>
               <span className="text-lg font-black tracking-wider text-white uppercase">
                 EBENEZER
@@ -246,7 +258,7 @@ export default function AdminDashboard() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search by name, email, or ticket ID..."
+              placeholder="Search by name or email..."
               className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 text-white text-xs sm:text-sm placeholder:text-slate-500 focus:outline-none transition-all"
             />
           </div>
@@ -279,10 +291,11 @@ export default function AdminDashboard() {
             <table className="w-full text-left text-xs sm:text-sm">
               <thead className="bg-slate-950/80 border-b border-slate-800 text-[11px] uppercase font-bold text-slate-400 tracking-wider">
                 <tr>
-                  <th className="py-4 px-4 sm:px-6">Ticket ID</th>
+                  <th className="py-4 px-4 sm:px-6">Registration Reference</th>
                   <th className="py-4 px-4 sm:px-6">Attendee</th>
                   <th className="py-4 px-4 sm:px-6 hidden md:table-cell">Phone</th>
-                  <th className="py-4 px-4 sm:px-6">Status</th>
+                  <th className="py-4 px-4 sm:px-6">Email</th>
+                  <th className="py-4 px-4 sm:px-6">Check-in</th>
                   <th className="py-4 px-4 sm:px-6 hidden lg:table-cell">Registered</th>
                   <th className="py-4 px-4 sm:px-6 text-right">Actions</th>
                 </tr>
@@ -311,6 +324,11 @@ export default function AdminDashboard() {
                       </td>
 
                       {/* Status */}
+                      <td className="py-4 px-4 sm:px-6">
+                        <span className={`inline-flex px-2.5 py-1 rounded-full text-xs font-semibold border ${attendee.emailStatus === 'sent' ? 'bg-emerald-950/80 text-emerald-400 border-emerald-800/50' : attendee.emailStatus === 'failed' ? 'bg-rose-950/80 text-rose-300 border-rose-800/50' : 'bg-amber-950/80 text-amber-300 border-amber-800/50'}`}>
+                          {attendee.emailStatus || 'pending'}
+                        </span>
+                      </td>
                       <td className="py-4 px-4 sm:px-6">
                         {attendee.status === 'checked_in' ? (
                           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-950/80 text-emerald-400 border border-emerald-800/50">
@@ -366,7 +384,7 @@ export default function AdminDashboard() {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={6} className="py-12 text-center text-slate-500">
+                    <td colSpan={7} className="py-12 text-center text-slate-500">
                       No attendees found matching "{searchQuery}".
                     </td>
                   </tr>
@@ -417,6 +435,12 @@ export default function AdminDashboard() {
                 <span className="text-slate-400">Registration Timestamp:</span>
                 <span className="font-semibold text-slate-200">
                   {new Date(selectedAttendee.createdAt).toLocaleString()}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-400">Confirmation Email:</span>
+                <span className={`font-semibold ${selectedAttendee.emailStatus === 'failed' ? 'text-rose-400' : selectedAttendee.emailStatus === 'sent' ? 'text-emerald-400' : 'text-amber-300'}`}>
+                  {selectedAttendee.emailStatus || 'pending'}
                 </span>
               </div>
               {selectedAttendee.checkedInAt && (

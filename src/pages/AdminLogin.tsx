@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import { ShieldCheck, Lock, Mail, ArrowLeft, Loader2, AlertCircle, Sparkles } from 'lucide-react'
+import { Lock, Mail, ArrowLeft, Loader2, AlertCircle } from 'lucide-react'
 import { loginAdmin } from '../services/adminService'
 
 export default function AdminLogin() {
@@ -27,17 +27,11 @@ export default function AdminLogin() {
       } else {
         setErrorMessage(res.error || 'Authentication failed.')
       }
-    } catch {
-      setErrorMessage('An unexpected error occurred during login.')
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : 'An unexpected error occurred during login.')
     } finally {
       setIsLoading(false)
     }
-  }
-
-  const fillDemoCredentials = () => {
-    setEmail('admin@ebenezer.org')
-    setPassword('admin2026')
-    setErrorMessage(null)
   }
 
   return (
@@ -60,10 +54,12 @@ export default function AdminLogin() {
       {/* Login Card */}
       <div className="w-full max-w-md bg-slate-900/90 border border-purple-500/30 rounded-3xl p-8 sm:p-10 backdrop-blur-2xl shadow-2xl shadow-purple-950/60 relative">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-fuchsia-500 to-indigo-600 p-0.5 shadow-lg shadow-purple-600/30 mb-4">
-            <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
-              <ShieldCheck className="w-7 h-7 text-fuchsia-400" />
-            </div>
+          <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-lg shadow-purple-600/30 border border-purple-500/40 mb-4 mx-auto">
+            <img
+              src="/images/logo.jpg"
+              alt="EBENEZER Logo"
+              className="w-full h-full object-cover object-center"
+            />
           </div>
           <h1 className="text-2xl font-black uppercase text-white tracking-wide">
             Admin Portal
@@ -135,20 +131,6 @@ export default function AdminLogin() {
           </button>
         </form>
 
-        {/* One-click Demo Credentials Button */}
-        <div className="mt-6 pt-5 border-t border-slate-800 text-center">
-          <button
-            type="button"
-            onClick={fillDemoCredentials}
-            className="inline-flex items-center gap-1.5 text-xs text-fuchsia-400 hover:text-fuchsia-300 transition-colors font-medium cursor-pointer"
-          >
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Click here to fill Demo Credentials</span>
-          </button>
-          <div className="text-[10px] text-slate-500 mt-1">
-            Email: admin@ebenezer.org • Password: admin2026
-          </div>
-        </div>
       </div>
     </div>
   )

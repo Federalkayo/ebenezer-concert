@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react'
-import { Ticket, CheckCircle2, AlertCircle, Loader2, Download, Calendar, Sparkles, User, Mail, Phone, RefreshCw } from 'lucide-react'
+import { Ticket, CheckCircle2, AlertCircle, Loader2, Download, Calendar, User, Mail, Phone, RefreshCw } from 'lucide-react'
 import { registerAttendee } from '../services/registrationService'
 import type { Attendee } from '../types'
 
@@ -108,9 +108,13 @@ export default function RegistrationForm() {
               <div className="absolute top-0 right-0 translate-x-4 -translate-y-4 w-28 h-28 bg-fuchsia-500/10 rounded-full blur-2xl pointer-events-none"></div>
 
               <div className="flex items-center justify-between border-b border-purple-900/50 pb-4 mb-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-fuchsia-500 to-indigo-600 flex items-center justify-center shadow-md">
-                    <Sparkles className="w-4 h-4 text-white" />
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-lg overflow-hidden shadow-md border border-purple-500/30">
+                    <img
+                      src="/images/logo.jpg"
+                      alt="EBENEZER Logo"
+                      className="w-full h-full object-cover object-center"
+                    />
                   </div>
                   <div>
                     <span className="text-base font-black text-white tracking-wider uppercase">EBENEZER</span>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Sparkles, ShieldCheck, Heart, MapPin, Calendar, Mail } from 'lucide-react'
+import { ShieldCheck, Heart, MapPin, Calendar, Mail } from 'lucide-react'
 
 export default function Footer() {
   const scrollTo = (id: string) => {
@@ -16,8 +16,12 @@ export default function Footer() {
           {/* Brand & Vision */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-2.5">
-              <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-fuchsia-500 to-indigo-600 shadow-md">
-                <Sparkles className="w-5 h-5 text-white" />
+              <div className="w-9 h-9 rounded-xl overflow-hidden shadow-md border border-purple-500/30">
+                <img
+                  src="/images/logo.jpg"
+                  alt="EBENEZER Logo"
+                  className="w-full h-full object-cover object-center"
+                />
               </div>
               <span className="text-2xl font-black tracking-wider text-white uppercase font-sans">
                 EBENEZER
