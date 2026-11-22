@@ -4,6 +4,7 @@
   html {
     scroll-behavior: smooth;
     color-scheme: dark;
+    -webkit-tap-highlight-color: transparent;
   }
 
   body {
@@ -31,6 +32,154 @@
 @media (max-width: 640px) {
   .hero {
     background-position: center center;
+  }
+}
+
+/* Mobile-first touch & performance adjustments */
+button, a {
+  touch-action: manipulation;
+}
+
+/* Animation Keyframes & Performance rules (respects prefers-reduced-motion) */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes heroBadgeFade {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes heroTitleReveal {
+    from {
+      opacity: 0;
+      transform: translateY(16px) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes heroFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes ctaPulseGlow {
+    0%, 100% {
+      box-shadow: 0 0 25px rgba(192, 38, 211, 0.4), 0 0 50px rgba(147, 51, 234, 0.2);
+    }
+    50% {
+      box-shadow: 0 0 45px rgba(192, 38, 211, 0.75), 0 0 75px rgba(147, 51, 234, 0.45);
+    }
+  }
+
+  @keyframes mobileDrawerEntry {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes ticketPop {
+    0% {
+      opacity: 0;
+      transform: translateY(20px) scale(0.94);
+    }
+    60% {
+      opacity: 1;
+      transform: translateY(-3px) scale(1.01);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes secondTick {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.03);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .animate-hero-badge {
+    animation: heroBadgeFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .animate-hero-title {
+    animation: heroTitleReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  }
+
+  .animate-hero-subtitle {
+    animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+  }
+
+  .animate-hero-desc {
+    animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+  }
+
+  .animate-hero-details {
+    animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+  }
+
+  .animate-hero-countdown {
+    animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+  }
+
+  .animate-hero-cta {
+    animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both, ctaPulseGlow 3s ease-in-out infinite 1.4s;
+  }
+
+  .animate-mobile-drawer {
+    animation: mobileDrawerEntry 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .animate-ticket-reveal {
+    animation: ticketPop 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .animate-second-tick {
+    animation: secondTick 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Native CSS Scroll-Driven reveal (progressive enhancement) */
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    @keyframes scrollReveal {
+      entry 0% {
+        opacity: 0;
+        transform: translateY(24px) scale(0.98);
+      }
+      entry 100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .animate-scroll-reveal {
+      animation: scrollReveal auto cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-timeline: view();
+      animation-range: entry 5% entry 80%;
+    }
   }
 }
 

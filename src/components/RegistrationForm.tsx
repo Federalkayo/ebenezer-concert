@@ -79,7 +79,7 @@ export default function RegistrationForm() {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <div className="animate-scroll-reveal text-center max-w-2xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-fuchsia-950/80 to-purple-950/80 border border-fuchsia-500/40 text-fuchsia-300 text-xs sm:text-sm font-semibold mb-4 shadow-lg shadow-fuchsia-950/40">
             <Ticket className="w-4 h-4 text-fuchsia-400" />
             <span>FREE ADMISSION • INSTANT CONFIRMATION</span>
@@ -93,9 +93,9 @@ export default function RegistrationForm() {
           </p>
         </div>
 
-        {/* If Registered: Display E-Ticket Pass (Success State) */}
+        {/* If Registered: Display E-Ticket Pass (Success State with entrance animation) */}
         {registeredAttendee ? (
-          <div className="relative max-w-lg mx-auto bg-slate-900/90 border border-fuchsia-500/40 rounded-3xl p-6 sm:p-8 backdrop-blur-2xl shadow-2xl shadow-fuchsia-950/50">
+          <div className="animate-ticket-reveal relative max-w-lg mx-auto bg-slate-900/90 border border-fuchsia-500/40 rounded-3xl p-6 sm:p-8 backdrop-blur-2xl shadow-2xl shadow-fuchsia-950/50">
             {/* Top Success Badge */}
             <div className="flex items-center justify-center gap-2 text-emerald-400 font-bold text-sm mb-6 bg-emerald-950/40 border border-emerald-500/30 py-2 px-4 rounded-full">
               <CheckCircle2 className="w-4 h-4" />
@@ -185,7 +185,7 @@ export default function RegistrationForm() {
             <div className="flex flex-col sm:flex-row gap-3 mb-4">
               <button
                 onClick={handlePrint}
-                className="flex-1 py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-white bg-fuchsia-600 hover:bg-fuchsia-500 transition-all flex items-center justify-center gap-2 shadow-lg shadow-fuchsia-600/30 cursor-pointer"
+                className="flex-1 py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-white bg-fuchsia-600 hover:bg-fuchsia-500 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-lg shadow-fuchsia-600/30 cursor-pointer"
               >
                 <Download className="w-4 h-4" />
                 <span>Save / Print Ticket</span>
@@ -195,7 +195,7 @@ export default function RegistrationForm() {
                 href={calendarUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="flex-1 py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-slate-200 bg-slate-800 hover:bg-slate-700 transition-all border border-slate-700 flex items-center justify-center gap-2 text-center"
+                className="flex-1 py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-slate-200 bg-slate-800 hover:bg-slate-700 active:scale-95 transition-all border border-slate-700 flex items-center justify-center gap-2 text-center"
               >
                 <Calendar className="w-4 h-4 text-purple-400" />
                 <span>Add to Calendar</span>
@@ -204,7 +204,7 @@ export default function RegistrationForm() {
 
             <button
               onClick={handleReset}
-              className="w-full py-2.5 rounded-xl font-semibold text-xs text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+              className="w-full py-2.5 rounded-xl font-semibold text-xs text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 active:scale-95 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
             >
               <RefreshCw className="w-3.5 h-3.5" />
               <span>Register Another Attendee</span>
@@ -212,7 +212,7 @@ export default function RegistrationForm() {
           </div>
         ) : (
           /* Registration Form Card */
-          <div className="relative max-w-xl mx-auto bg-slate-900/80 border border-purple-500/30 rounded-3xl p-8 sm:p-10 backdrop-blur-2xl shadow-2xl shadow-purple-950/50">
+          <div className="animate-scroll-reveal relative max-w-xl mx-auto bg-slate-900/80 border border-purple-500/30 rounded-3xl p-7 sm:p-10 backdrop-blur-2xl shadow-2xl shadow-purple-950/50">
             {/* Top Border Glow */}
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-fuchsia-400/50 to-transparent"></div>
 
@@ -319,7 +319,7 @@ export default function RegistrationForm() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full relative group overflow-hidden py-4 px-6 rounded-2xl font-black text-base text-white bg-gradient-to-r from-fuchsia-600 via-purple-600 to-indigo-600 shadow-[0_0_35px_rgba(192,38,211,0.4)] hover:shadow-[0_0_50px_rgba(192,38,211,0.7)] hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer border border-fuchsia-400/40 disabled:opacity-60 disabled:cursor-not-allowed"
+                className="w-full relative group overflow-hidden py-4 px-6 rounded-2xl font-black text-base text-white bg-gradient-to-r from-fuchsia-600 via-purple-600 to-indigo-600 shadow-[0_0_35px_rgba(192,38,211,0.4)] hover:shadow-[0_0_50px_rgba(192,38,211,0.7)] hover:scale-[1.01] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer border border-fuchsia-400/40 disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {isLoading ? (
                   <>

@@ -39,7 +39,7 @@ export default function About() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header Badge & Title */}
-        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+        <div className="animate-scroll-reveal text-center max-w-3xl mx-auto mb-16 sm:mb-20">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-950/60 border border-purple-500/30 text-purple-300 text-xs sm:text-sm font-semibold mb-4">
             <Sparkles className="w-3.5 h-3.5 text-fuchsia-400" />
             <span>THE VISION BEHIND EBENEZER</span>
@@ -68,7 +68,7 @@ export default function About() {
             return (
               <div
                 key={index}
-                className="group relative flex flex-col justify-between p-8 rounded-3xl bg-slate-900/50 border border-slate-800/80 hover:border-purple-500/50 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 shadow-xl shadow-slate-950"
+                className="animate-scroll-reveal group relative flex flex-col justify-between p-7 sm:p-8 rounded-3xl bg-slate-900/50 border border-slate-800/80 hover:border-purple-500/50 active:scale-[0.98] sm:hover:-translate-y-2 backdrop-blur-xl transition-all duration-300 shadow-xl shadow-slate-950"
               >
                 {/* Glow highlight */}
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
@@ -76,7 +76,7 @@ export default function About() {
                 <div>
                   <div className="flex items-center justify-between mb-6">
                     <div
-                      className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${pillar.accent} p-0.5 shadow-lg shadow-purple-900/30`}
+                      className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${pillar.accent} p-0.5 shadow-lg shadow-purple-900/30 group-hover:scale-105 transition-transform`}
                     >
                       <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
                         <Icon className="w-7 h-7 text-white" />
