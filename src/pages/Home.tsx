@@ -2,6 +2,7 @@ import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import About from '../components/About'
 import EventDetails from '../components/EventDetails'
+import MeetTheCrew from '../components/MeetTheCrew'
 import RegistrationForm from '../components/RegistrationForm'
 import Footer from '../components/Footer'
 
@@ -13,6 +14,7 @@ export default function Home() {
         <Hero />
         <About />
         <EventDetails />
+        <MeetTheCrew />
         <RegistrationForm />
       </main>
       <Footer />
