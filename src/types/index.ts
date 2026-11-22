@@ -5,6 +5,7 @@ export interface Attendee {
   email: string
   phone?: string
   status: 'confirmed' | 'checked_in' | 'cancelled'
+  emailStatus: 'pending' | 'sent' | 'failed'
   createdAt: string
   checkedInAt?: string
 }
@@ -20,6 +21,7 @@ export interface RegistrationResponse {
   ticketId?: string
   attendee?: Attendee
   message?: string
+  duplicate?: boolean
 }
 
 export interface DashboardStats {

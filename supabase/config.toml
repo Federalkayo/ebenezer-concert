@@ -1,0 +1,5 @@
+project_id = "ebenezer-concert"
+
+[functions.register-attendee]
+# Public event registration endpoint; data access is confined to the function's service role.
+verify_jwt = false
