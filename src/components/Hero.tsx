@@ -1,4 +1,4 @@
-import { Calendar, MapPin, Sparkles, Ticket, ArrowRight, ShieldCheck } from 'lucide-react'
+import { Calendar, MapPin, Clock, Sparkles, Ticket, ArrowRight, ShieldCheck } from 'lucide-react'
 import Countdown from './Countdown'
 
 export default function Hero() {
@@ -54,6 +54,11 @@ export default function Hero() {
           <div className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/80 border border-slate-800/80 backdrop-blur-md active:scale-95 transition-transform">
             <MapPin className="w-4 h-4 text-purple-400" />
             <span>Lagos, Nigeria</span>
+          </div>
+
+          <div className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/80 border border-slate-800/80 backdrop-blur-md active:scale-95 transition-transform">
+            <Clock className="w-4 h-4 text-indigo-400" />
+            <span>4:00 PM–6:00 PM WAT</span>
           </div>
 
           <div className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-fuchsia-950/60 border border-fuchsia-700/50 text-fuchsia-300 backdrop-blur-md active:scale-95 transition-transform">

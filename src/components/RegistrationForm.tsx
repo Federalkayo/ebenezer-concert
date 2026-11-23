@@ -70,7 +70,7 @@ export default function RegistrationForm() {
   }
 
   // Google Calendar Event Link
-  const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=EBENEZER+Concert+2026&dates=20261129T160000Z/20261129T220000Z&details=EBENEZER:+An+Experience+of+Worship,+Praise+%26+Encounter.+Lagos,+Nigeria.+Ticket+ID:+${registeredAttendee?.ticketId || 'FREE'}&location=Lagos,+Nigeria`
+  const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=EBENEZER+Concert+2026&dates=20261129T150000Z/20261129T170000Z&details=EBENEZER:+An+Experience+of+Worship,+Praise+%26+Encounter.+Registration+reference:+${registeredAttendee?.ticketId || 'FREE'}&location=J%20%26%20P%20Studio%2C%20Kosofe%20Bus%20Stop%2C%20beside%20Glass%20House%2C%20Lagos%2C%20Nigeria`
 
   return (
     <section id="register" className="relative py-24 sm:py-32 bg-slate-950 text-slate-100 overflow-hidden">
@@ -151,11 +151,11 @@ export default function RegistrationForm() {
                 <div className="grid grid-cols-2 gap-4 text-xs">
                   <div>
                     <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Venue</span>
-                    <div className="font-semibold text-slate-300">To Be Announced</div>
+                    <div className="font-semibold text-slate-300">J &amp; P Studio, Kosofe Bus Stop, beside Glass House</div>
                   </div>
                   <div>
                     <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Time</span>
-                    <div className="font-semibold text-slate-300">To Be Announced</div>
+                    <div className="font-semibold text-slate-300">4:00 PM–6:00 PM WAT</div>
                   </div>
                 </div>
               </div>

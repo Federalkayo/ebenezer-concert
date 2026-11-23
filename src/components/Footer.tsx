@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ShieldCheck, Heart, MapPin, Calendar, Mail } from 'lucide-react'
+import { ShieldCheck, Heart, MapPin, Calendar, Clock, Mail } from 'lucide-react'
 
 export default function Footer() {
   const scrollTo = (id: string) => {
@@ -90,7 +90,11 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2 text-slate-300">
                 <MapPin className="w-3.5 h-3.5 text-purple-400" />
-                <span>Lagos, Nigeria</span>
+                <span>J &amp; P Studio, Kosofe Bus Stop, beside Glass House</span>
+              </div>
+              <div className="flex items-center gap-2 text-slate-300">
+                <Clock className="w-3.5 h-3.5 text-indigo-400" />
+                <span>4:00 PM–6:00 PM WAT</span>
               </div>
               <div className="flex items-center gap-2 text-slate-300">
                 <Mail className="w-3.5 h-3.5 text-indigo-400" />

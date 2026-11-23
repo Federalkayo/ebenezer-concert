@@ -14,16 +14,16 @@ export default function EventDetails() {
       icon: MapPin,
       title: 'Location',
       value: 'Lagos, Nigeria',
-      subtext: 'Venue: To Be Announced',
-      badge: 'Prime Venue',
+      subtext: 'J & P Studio, Kosofe Bus Stop, beside Glass House',
+      badge: 'Event Venue',
       color: 'text-purple-400',
     },
     {
       icon: Clock,
       title: 'Time',
-      value: 'To Be Announced',
-      subtext: 'Doors Open Early for Security',
-      badge: 'Schedule',
+      value: '4:00 PM–6:00 PM',
+      subtext: 'West Africa Time (WAT)',
+      badge: 'Event Time',
       color: 'text-indigo-400',
     },
     {
@@ -51,9 +51,9 @@ export default function EventDetails() {
     },
     {
       icon: Bell,
-      title: 'Venue & Time Announcement',
+      title: 'Venue & Time',
       description:
-        'Official venue and exact start time will be broadcasted to all registered attendees via email and official channels.',
+        'Join us at J & P Studio, Kosofe Bus Stop, beside Glass House, from 4:00 PM to 6:00 PM WAT.',
     },
     {
       icon: HelpCircle,

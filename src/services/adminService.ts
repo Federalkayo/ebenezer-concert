@@ -2,7 +2,7 @@ import { requireSupabase } from '../lib/supabaseClient'
 import type { AdminUser, Attendee, DashboardStats } from '../types'
 
 export function getDaysRemaining(): number {
-  const targetDate = new Date('2026-11-29T00:00:00+01:00').getTime()
+  const targetDate = new Date('2026-11-29T16:00:00+01:00').getTime()
   return Math.max(0, Math.ceil((targetDate - Date.now()) / 86_400_000))
 }
 

@@ -4,6 +4,8 @@ import About from '../components/About'
 import EventDetails from '../components/EventDetails'
 import MeetTheCrew from '../components/MeetTheCrew'
 import RegistrationForm from '../components/RegistrationForm'
+import SupportSection from '../components/SupportSection'
+import WhatsAppButton from '../components/WhatsAppButton'
 import Footer from '../components/Footer'
 
 export default function Home() {
@@ -16,8 +18,10 @@ export default function Home() {
         <EventDetails />
         <MeetTheCrew />
         <RegistrationForm />
+        <SupportSection />
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   )
 }

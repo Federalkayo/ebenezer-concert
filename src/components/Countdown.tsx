@@ -7,8 +7,8 @@ interface TimeLeft {
   seconds: number
 }
 
-// Count down to the event date; the event time is still to be announced.
-const TARGET_DATE = new Date('2026-11-29T00:00:00+01:00').getTime()
+// EBENEZER begins at 4:00 PM West Africa Time on 29 November 2026.
+const TARGET_DATE = new Date('2026-11-29T16:00:00+01:00').getTime()
 
 function calculateTimeLeft(): TimeLeft {
   const difference = TARGET_DATE - new Date().getTime()
