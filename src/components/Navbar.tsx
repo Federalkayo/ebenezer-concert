@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, Ticket, ShieldCheck } from 'lucide-react'
+import { Menu, X, Ticket } from 'lucide-react'
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -95,15 +95,6 @@ export default function Navbar() {
 
           {/* Right Action Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <Link
-              to="/admin/login"
-              title="Admin Portal"
-              className="p-2 rounded-xl text-slate-400 hover:text-purple-300 hover:bg-purple-950/40 border border-transparent hover:border-purple-800/40 active:scale-95 transition-all text-xs font-medium flex items-center gap-1.5"
-            >
-              <ShieldCheck className="w-4 h-4" />
-              <span className="text-xs">Admin</span>
-            </Link>
-
             <button
               onClick={() => scrollToSection('register')}
               className="relative group overflow-hidden px-5 py-2.5 rounded-full font-bold text-sm text-white bg-gradient-to-r from-fuchsia-600 via-purple-600 to-indigo-600 shadow-lg shadow-purple-600/30 hover:shadow-fuchsia-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center gap-2 cursor-pointer border border-fuchsia-400/30"
@@ -171,14 +162,6 @@ export default function Navbar() {
                 GET YOUR FREE TICKET
               </button>
 
-              <Link
-                to="/admin/login"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-center text-xs text-slate-400 hover:text-slate-200 py-2 flex items-center justify-center gap-1.5 active:scale-95 transition-transform"
-              >
-                <ShieldCheck className="w-3.5 h-3.5" />
-                Admin Dashboard Portal
-              </Link>
             </div>
           </div>
         </div>

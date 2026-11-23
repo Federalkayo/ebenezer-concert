@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom'
-import { ShieldCheck, Heart, MapPin, Calendar, Clock, Mail } from 'lucide-react'
+import { Heart, MapPin, Calendar, Clock, Mail } from 'lucide-react'
 
 export default function Footer() {
   const scrollTo = (id: string) => {
@@ -78,7 +77,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Event Summary & Admin Link */}
+          {/* Event Summary */}
           <div>
             <h4 className="text-xs uppercase font-bold tracking-widest text-white mb-4">
               Event Info
@@ -99,16 +98,6 @@ export default function Footer() {
               <div className="flex items-center gap-2 text-slate-300">
                 <Mail className="w-3.5 h-3.5 text-indigo-400" />
                 <span>info@ebenezerconcert.org</span>
-              </div>
-
-              <div className="pt-3">
-                <Link
-                  to="/admin/login"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-purple-300 hover:border-purple-800/40 text-[11px] font-medium transition-all"
-                >
-                  <ShieldCheck className="w-3.5 h-3.5" />
-                  <span>Admin Dashboard Portal</span>
-                </Link>
               </div>
             </div>
           </div>
