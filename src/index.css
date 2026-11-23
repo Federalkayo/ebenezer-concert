@@ -23,7 +23,7 @@
       rgba(4, 5, 22, 0.72) 75%,
       rgba(2, 6, 23, 0.98) 100%
     ),
-    url('/images/ebenezer-hero.png');
+    url('/images/ebenezer-hero.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -32,6 +32,26 @@
 @media (max-width: 640px) {
   .hero {
     background-position: center center;
+  }
+
+  /* Large blurred layers and backdrop filters are expensive to composite on
+     entry-level mobile GPUs. Keep the color treatment, without the live blur. */
+  [class*="blur-"] {
+    filter: none !important;
+  }
+
+  [class*="backdrop-blur"] {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  /* Scroll-linked reveal and infinite glow/pulse effects create continuous
+     work while scrolling or when the page is otherwise idle. */
+  .animate-scroll-reveal,
+  .animate-hero-cta,
+  .animate-second-tick,
+  .animate-ping {
+    animation: none !important;
   }
 }
 

@@ -9,11 +9,19 @@ export default function Navbar() {
   const isHomePage = location.pathname === '/'
 
   useEffect(() => {
+    let frame = 0
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30)
+      if (frame) return
+      frame = window.requestAnimationFrame(() => {
+        setIsScrolled(window.scrollY > 30)
+        frame = 0
+      })
     }
     window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      if (frame) window.cancelAnimationFrame(frame)
+    }
   }, [])
 
   const scrollToSection = (id: string) => {
